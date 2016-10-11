@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>加入体验</title>
+	<style>
+	ul{list-style: none;}
+		#list{
+		width: 800px;
+		margin: 50px auto;
+		}
+		#list li{
+			float: left;
+			padding-left: 20px;
+		}
+		#list .name{
+			display: block;
+			text-decoration: none;
+			font-family: arial;
+			font-size: 16px;
+			color: #000;
+			padding-top: 20px;
+		}
+		#list, .price{
+			font-size: 12px;
+			display: block;
+			margin-bottom: 10px;
+		}
+		#cart{
+			width: 1000px;
+			margin:10px auto;
+		}
+		.add{
+			display: block;
+			width: 97px;
+			height: 24px;
+			background: url("images/bg24.gif");
+		}
+		#cart img{
+			width: 50px;
+			height: 50px;
+			padding-right: 50px;
+		}
+		#cart a{padding-right: 50px;}
+		#cart span{padding-right: 50px;}
+		#cart .del{
+			display: inline-block;/*行内成块*/
+			width: 97px;
+			height: 24px;
+			background: url("images/bg21.gif") no-repeat;
+			float: right;
+		}
+		.item{
+			display: none;
+		}
+	</style>
+</head> 
+<body>
+	<ul id="cart">
+		
+	</ul>
+	<ul id="list">
+		<li>
+			<img src="images/1.gif" class="pic"><br>
+			<a href="#"class="name">昵图网</a><br>
+			<span class="price">定制价格：128元</span><br/>
+			<a href="#" class="add"></a>
+		</li>
+		<li>
+			<img src="images/2.gif" class="pic"><br>
+			<a href="#"class="name">相册动画</a><br>
+			<span class="price">定制价格：128元</span><br/>
+			<a href="#" class="add"></a>
+		</li>
+		<li>
+			<img src="images/3.gif" class="pic"><br>
+			<a href="#"class="name">网易养猪</a><br>
+			<span class="price">定制价格：528元</span><br/>
+			<a href="#" class="add"></a>
+		</li>
+		<li>
+			<img src="images/4.gif" class="pic"><br>
+			<a href="#"class="name">百度联盟</a><br>
+			<span class="price">定制价格：328元</span><br/>
+			<a href="#" class="add"></a>
+		</li>
+		<li>
+			<img src="images/5.gif" class="pic"><br>
+			<a href="#"class="name">QQ头像</a><br>
+			<span class="price">定制价格：428元</span><br/>
+			<a href="#" class="add"></a>
+		</li>
+	</ul>
+	<script type="text/javascript" src="js/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		// $(".add").click(function(){
+		// 	var item=$(this).parent();
+		// 	var pic=item.find(".pic").attr("src");
+		// 	var name=item.find(".name").text();
+		// 	var price=item.find(".price").text();
+		// 	var product=$("<li class='item'><img src='"+pic+"'><a>"+name+"</a><span>"+price+"</span><a class='del'></a></li>");
+		// 	$("#cart").append(product);
+		// 	item.remove();
+		// 	product.slideDown(300);
+
+
+		// 	$(".del").click(function(){
+		// 	var fa=$(this).parent();
+		// 	var pic1=fa.find("img").attr("src");
+		// 	var name1=fa.find("a").text();
+		// 	var price1=fa.find("span").text();
+		// 	var huany=$("<li class='huany'><img src='"+pic1+"'><a>"+name1+"</a><span>"+price1+"</span><a class='add'></a></li>");
+		// 	$("#list").append(huany);
+		// 	fa.remove();
+		// 	huany.slideDown(300);
+		// })
+		// })
+		/*加入体验*/
+		$("body").on("click",".add",function(){
+			var item=$(this).parent();
+			var pic=item.find("img").attr("src");
+			var name=item.find("a").text();
+			var price=item.find("span").text();
+
+			var cart_item=$("<li class='item'><img src='"+pic+"'><a>"+name+"</a><span>"+price+"</span><a class='del'></a></li>");
+			$("#cart").append(cart_item);
+			item.remove();
+			cart_item.slideDown(300);
+		})
+		/*删除体验*/
+		$("body").on("click",".del",function(){
+			var item=$(this).parent();
+			var pic=item.find("img").attr("src");
+			var name=item.find("a").text();
+			var price=item.find("span").text();
+
+			var list_item=$("<li><img src='"+pic+"' class='pic'><br><a class='name'>"+name+"</a><br><span class='price'>"+price+"</span><br><a class='add'></a></li>");
+			$("#list").append(list_item);
+			item.remove();
+		})
+	</script>
+</body>
+</html>
